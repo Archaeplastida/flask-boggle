@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boggle!</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+
+<body>
+    <table>
+        {%for row in board%}<tr>{%for letter in row%}<td>{{letter}}</td>{%endfor%}</tr>{%endfor%}
+    </table>
+    <form method="POST">
+        <input type="text" placeholder="Guess" class="guess">
+        <button class="submit-button">SUBMIT</button>
+    </form>
+    <form method="POST">
+        <button class="restart-button" value="restart">RESTART</button>
+    </form>
+    <h3>{{board}}</h3>
+    <h3 class="current-guess"></h3>
+    <table>
+        <tr>
+            <td>SCORE</td>
+            <td>HIGH SCORE</td>
+            <td>PLAYS</td>
+        </tr>
+        <tr>
+            <td class="current-score">{{score}}</td>
+            <td class="high-score">{{high_score}}</td>
+            <td>{{plays}}</td>
+        </tr>
+    </table>
+    <h3 class="high-score-alert"></h3>
+    <h2>CORRECTLY GUESSED WORDS:</h2>
+    <ul class="correct-guessed-words">{%for word in correctly_guessed_words%}
+        <li>{{word}}</li>
+        {%endfor%}
+    </ul>
+    <h3 class="timer">{{time_left}}</h3>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="static/script.js"></script>
+</body>
+
+</html>
